@@ -9,6 +9,20 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poetry-dynamic-
 
 Summary: Plugin for Poetry to enable dynamic versioning based on VCS tags
 
+**Conda-forge notes:** If you are using this in a conda package and  PyPI is the source URL,
+it is possible that this plugin is not correctly setting the versions.
+
+In order to override the plugin and fix the behaviour,
+add the following to your `build:` section:
+
+```yml
+script_env:
+  - POETRY_DYNAMIC_VERSIONING_BYPASS=0.4.0
+```
+
+This will pull in the version defined in your meta.yml.
+
+
 Current build status
 ====================
 

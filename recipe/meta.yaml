@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -39,6 +39,19 @@ about:
   summary: Plugin for Poetry to enable dynamic versioning based on VCS tags
   license: MIT
   license_file: LICENSE
+  description: |
+    **Conda-forge notes:** If you are using this in a conda package and  PyPI is the source URL,
+    it is possible that this plugin is not correctly setting the versions.
+    
+    In order to override the plugin and fix the behaviour,
+    add the following to your `build:` section:
+
+    ```yml
+    script_env:
+      - POETRY_DYNAMIC_VERSIONING_BYPASS={{ version }}
+    ```
+
+    This will pull in the version defined in your meta.yml.
 
 extra:
   recipe-maintainers:
